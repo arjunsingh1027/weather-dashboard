@@ -1,33 +1,32 @@
-// user search variable
-var userSearch = $("#searchTermInput").val();
+// variable to store searched city
+var city = "";
 
-var urlQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + userSearch + "&appid=5cbd72fd5e331dfb73ef7b35fe744b79"
+// global variables
+var searchCity = $("#search-city");
+var searchButton = $("#search-button");
+var clearButton = $("#clear-history");
+var currentCity = $("#current-city");
+var currentTemperature = $("#temperature");
+var currentHumidty= $("#humidity");
+var currentWSpeed=$("#wind-speed");
+var currentUvindex= $("#uv-index");
+var sCity = [];
 
-$("#submit").on("click", function (event) {
-    event.preventDefault();
-    userQuery();
-});
+// function to search to see if searched city is in the entries from storage
+function find(c){
+    for (var i = 0; i<sCity.length; i++){
+        if (c.toUpperCase() === sCity[i]){
+            return -1;
+        }
+    }
+    return 1;
+}
 
-function userQuery() {
-    // ajax call for user input
-    $.ajax({
-        url: urlQuery,
-        method: "GET",
-    }).then(function (response) {
-        const card = $("<div>")
-            .attr("class", "container")
-            .append(
-                $("<div>")
-                    .attr("class", "row")
-                    .append(
-                        $("<div>")
-                            .attr("class", "col-md-10")
-                            .append(
-                                $("<h2>").text("City")
-                            )
-                    )
-            );
-        $("#results").append(card);
-    });
-    console.log("Yay you clicked a button!");
-};
+// API key
+var APIKey = "5cbd72fd5e331dfb73ef7b35fe744b79";
+
+// AJAX call
+function currentWeather(city){
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
+    
+}
