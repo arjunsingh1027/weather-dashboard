@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
@@ -19,18 +21,23 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <form>
-                <div class="form-group" id="form">
-                  <label for="citySearch" id="searchForACity">Search for a city:</label>
-                  <input type="city" class="form-control" id="citySearch">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="head">Search Parameters</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="search term">Search Term</label>
+                        <input type="term" class="form-control" id="searchTermInput">
+                    </div>
+                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 
 </body>
+
+<script src="script.js"></script>
 
 </html>
