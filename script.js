@@ -42,7 +42,7 @@ function currentWeather(citySearch) {
         $(currentTemperature).html((tempF).toFixed(2) + "&#8457");
 
         // display humidity
-        $(currentHumidty).html(response.main.humidty + "&");
+        $(currentHumidty).html(response.main.humidity + "%");
 
         // display windspeed in MPH
         var windKPH = response.wind.speed;
@@ -109,18 +109,21 @@ function forecast(cityid) {
 }
 
 // add city in search history
-function addToList(c) {
-    var listElement = $("<li>" + c.toUpperCase() + "</li>");
-    $(listElement).attr("class", "list-item");
-    $(listElement).attr("data-value", c.toUpperCase());
-    $(".list-item").append(listElement);
+function addToList(citySearch) {
+
+    $("#searched-cities").append(
+        $("<li>").text(citySearch)
+            .attr("class", "city-list")
+            .attr("id", citySearch)
+            .text(citySearch)
+    ) 
 }
 
 // display the weather when past searched city is clicked
 function pastSearch(event) {
-    var listElement = event.target;
+    var pastListElement = event.target;
     if (event.target.matches("li")) {
-        city = listElement.textContent.trim();
+        city = pastListElement.textContent.trim();
         currentWeather(city);
     }
 }
@@ -148,9 +151,10 @@ function clearHistory(event) {
 }
 
 // click events
-$("#search-button").on("click", function(){
+$("#search-button").on("click", function () {
     var citySearch = $("#search-city").val();
     currentWeather(citySearch);
+    addToList(citySearch);
 });
 $(document).on("click", pastSearch);
 $(window).on("load", lastCity);
